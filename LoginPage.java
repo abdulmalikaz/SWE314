@@ -1,13 +1,15 @@
 public class LoginPage {
     private AuthenticationController authController = new AuthenticationController();
 
-    public void displayLogin(String username, String password) {
+    public boolean displayLogin(String username, String password) {
         System.out.println("Attempting to log in...");
         boolean success = authController.handleLogin(username, password);
         if (success) {
             System.out.println("Login successful!");
+            return true;
         } else {
             System.out.println("Login failed. Please try again.");
+            return false;
         }
     }
 
@@ -17,7 +19,7 @@ public class LoginPage {
         if (success) {
             System.out.println("Sign-up successful!");
         } else {
-            System.out.println("Sign-up failed. Username may already exist.");
+            System.out.println("Sign-up failed.");
         }
     }
 }

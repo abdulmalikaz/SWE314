@@ -1,8 +1,11 @@
+import java.util.Scanner;
+
 public class AuthenticationController {
     private UserDatabase userDatabase = new UserDatabase(); // Stores user credentials
     private InputValidator validator = new InputValidator(); // Validates inputs
     private EncryptionManager encryptionManager = new EncryptionManager(); // Encrypts passwords
     private AccessControlManager accessControlManager = new AccessControlManager(); // Logs access
+    int OTP = 444100;
 
     // Handle user registration
     public boolean handleRegistration(String username, String password) {
@@ -24,6 +27,7 @@ public class AuthenticationController {
 
     // Handle user login
     public boolean handleLogin(String username, String password) {
+        Scanner read = new Scanner(System.in);
         User user = userDatabase.getUser(username);
         if (user == null) {
             System.out.println("User not found.");
@@ -34,7 +38,13 @@ public class AuthenticationController {
         String encryptedInputPassword = encryptionManager.encrypt(password);
         if (encryptedInputPassword.equals(user.getPasswordHash())) {
             accessControlManager.logAccess(username, "Login");
-            return true;
+            System.out.print("Enter the OPT sent to your mobile: ");
+            int code = read.nextInt();
+            if(code == OTP)
+                return true;
+            else
+                return false;
+
         } else {
             System.out.println("Incorrect password.");
             return false;

@@ -25,10 +25,10 @@ public class Vigenére_cipher {
 
     public String Vigenere_Cipher(String plainText) {
 
-        System.out.print("Enter Key (in capital): ");
+//        System.out.print("Enter Key (in capital): ");
         key = "ENCRYPT";
         //store the given key
-        System.out.print("P's Values (A=0,B=1,.....,Z=25): ");
+        //System.out.print("P's Values (A=0,B=1,.....,Z=25): ");
 
 
         keyLength = key.length(); // Length of the given key
@@ -45,7 +45,7 @@ public class Vigenére_cipher {
                 // Convert plaintext character to uppercase (ASCII A-Z is 65-90)
                 userInput = Character.toUpperCase(userInput);
                 userValue = (int) userInput-65; // Get ASCII value of the character starting from 0
-                System.out.print(userValue+" || ");
+                //System.out.print(userValue+" || ");
 
                 // Get the corresponding character from the key (mod (%) to repeat key)
                 keyInput = key.charAt(keyIndex % keyLength);
@@ -67,19 +67,19 @@ public class Vigenére_cipher {
             }
 
         }
-        System.out.println();
-        System.out.println("Key's stream (A=0,B=1,.....,Z=25): "+KeyStream(key));
-        System.out.println("Now we add the P's value with the Key stream to get the cyphertext");
-        System.out.print("CypherText:");
+//        System.out.println();
+//        System.out.println("Key's stream (A=0,B=1,.....,Z=25): "+KeyStream(key));
+//        System.out.println("Now we add the P's value with the Key stream to get the cyphertext");
+//        System.out.print("CypherText:");
         return encryptedText; // Return the final encrypted text
 
     }
     public String Vigenere_Decipher(String cipherText) {
         System.out.println("Enter Key(in capital): ");
-        key=input.nextLine(); //Take the Key input
-        System.out.println("Key Stream (A=0,B=1,......,Z=25): "+KeyStream(key));
+        key="ENCRYPT"; //Take the Key input
+       // System.out.println("Key Stream (A=0,B=1,......,Z=25): "+KeyStream(key));
 
-        System.out.print("C's values (A=0,B=1,......,Z=25): ");
+        //System.out.print("C's values (A=0,B=1,......,Z=25): ");
         keyLength = key.length();
         textLength = cipherText.length();
         decryptedText = ""; //to store the final result
@@ -91,7 +91,7 @@ public class Vigenére_cipher {
             if (Character.isLetter(cipherInput)) {
                 cipherInput = Character.toUpperCase(cipherInput);
                 cipherValue = (int) cipherInput-65; // Subtract 65 to start from 0 (A=0, B=1, ..., Z=25
-                System.out.print(cipherValue+" || "); //print values of cipher text
+                //System.out.print(cipherValue+" || "); //print values of cipher text
                 keyInput = key.charAt(keyIndex % keyLength);
                 keyValue = (int) keyInput -65;
 
@@ -105,9 +105,9 @@ public class Vigenére_cipher {
                 keyIndex++;
             }
         }
-        System.out.println();
-        System.out.println("Now we subtract C's value from Key's stream to get the cypher text");
-        System.out.print("Plaintext: ");
+//        System.out.println();
+//        System.out.println("Now we subtract C's value from Key's stream to get the cypher text");
+//        System.out.print("Plaintext: ");
         return decryptedText;
     }
     String temp="";
